@@ -22,8 +22,8 @@ import $ from 'jquery';
 
 
 $(document).ready(function() {
-    $(".close").click(function() {
-        console.log("El boton fuciona");
-        $("#store-errors").toggle("slow");
-    });
+  //$("#store-errors").hide();
+  $(".close").click(function() {
+    $("#store-errors").toggle("slow");
+  });
 });
