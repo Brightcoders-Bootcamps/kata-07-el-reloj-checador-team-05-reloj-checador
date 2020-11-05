@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  nip: 
+  address: MyText
+  status: false
+  work_days: 
+  enter_time: 2020-11-03 15:40:32
+  departure_time: 2020-11-03 15:40:32
+
+two:
+  name: MyText
+  nip: 
+  address: MyText
+  status: false
+  work_days: 
+  enter_time: 2020-11-03 15:40:32
+  departure_time: 2020-11-03 15:40:32
