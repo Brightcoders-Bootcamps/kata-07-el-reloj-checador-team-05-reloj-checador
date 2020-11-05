@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: clock_production
-  username: clock
-  password: <%= ENV['CLOCK_DATABASE_PASSWORD'] %>
+  username: peter
+  password: 1007

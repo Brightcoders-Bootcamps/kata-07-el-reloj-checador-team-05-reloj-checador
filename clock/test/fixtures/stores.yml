@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  address: MyText
+  phone: MyText
+  open_time: 2020-10-29 16:25:02
+  close_time: 2020-10-29 16:25:02
+  status: 
+
+two:
+  name: MyText
+  address: MyText
+  phone: MyText
+  open_time: 2020-10-29 16:25:02
+  close_time: 2020-10-29 16:25:02
+  status: 
