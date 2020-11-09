@@ -24,7 +24,6 @@ class EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
-    # @employee = Employee.new(employee_params)
     @employee = Employee.new(format_work_days(employee_params))
 
     respond_to do |format|
@@ -42,7 +41,6 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1.json
   def update
     respond_to do |format|
-      # if @employee.update(employee_params)
       if @employee.update(format_work_days(employee_params))
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
         format.json { render :show, status: :ok, location: @employee }

@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: clock_production
-  username: peter
-  password: 1007
+  username: pguser
+  password: pguser_password

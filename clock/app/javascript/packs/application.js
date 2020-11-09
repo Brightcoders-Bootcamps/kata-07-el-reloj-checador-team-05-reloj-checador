@@ -24,7 +24,6 @@ import $ from 'jquery';
 $(document).ready(function() {
   //$("#store-errors").hide();
   $(".close").click(function() {
-    $("#store-errors").toggle("slow");
+    $("#Errors").toggle("slow");
   });
 });
-
