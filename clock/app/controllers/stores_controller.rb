@@ -19,6 +19,7 @@ class StoresController < ApplicationController
 
   # GET /stores/1/edit
   def edit
+    @show_btn = true
   end
 
   # POST /stores
