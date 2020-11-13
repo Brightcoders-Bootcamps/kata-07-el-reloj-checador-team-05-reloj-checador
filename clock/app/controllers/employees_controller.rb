@@ -19,8 +19,8 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1/edit
   def edit
+    @show_btn_employee = true
   end
-
   # POST /employees
   # POST /employees.json
   def create
