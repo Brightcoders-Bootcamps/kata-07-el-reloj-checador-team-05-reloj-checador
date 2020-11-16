@@ -27,3 +27,25 @@ $(document).ready(function() {
     $("#Errors").toggle("slow");
   });
 });
+
+let getDOM = (id) => {
+  return document.getElementById(id)
+ }
+
+ window.onload = function() {
+  const tabs = document.querySelectorAll("#navTabs>li>a"),
+    panes = document.querySelectorAll("#navPanes>div")
+
+  for (let i = 0; i < tabs.length; i++)
+    tabs[i].addEventListener("click", function () {
+      for (let i1 = 0; i1 < tabs.length; i1++) tabs[i1].classList.remove("active");
+
+      for (let i2 = 0; i2 < panes.length; i2++) panes[i2].classList.remove("show", "active");
+
+      const tab = this.classList, pane = getDOM(this.getAttribute("aria-controls")).classList
+
+      tab.add("active")
+      pane.add("show", "active")
+    })
+ }
+ 

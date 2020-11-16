@@ -1,0 +1,49 @@
+  <div class="row">
+		<div class="col-3">
+      <ul class="nav nav-tabs flex-column" id="navTabs">
+        <div class="sb-sidenav-menu-heading">Reports</div>
+				<li class="nav-item">
+					<a aria-controls="first-pane" class="nav-link active" id="first-tab">Attendance</a>
+				</li>
+				<li class="nav-item">
+					<a aria-controls="second-pane" class="nav-link" id="second-tab">Absence</a>
+        </li>
+        <div class="sb-sidenav-menu-heading">Employees</div>
+        <li class="nav-item">
+					<a aria-controls="third-pane" class="nav-link" id="third-tab">Show</a>
+				</li>
+				<li class="nav-item">
+					<a aria-controls="fourth-pane" class="nav-link" id="fourth-tab">Create</a>
+        </li>
+        <div class="sb-sidenav-menu-heading">Stores</div>
+        <li class="nav-item">
+					<a aria-controls="fifth-pane" class="nav-link" id="fifth-tab">Show</a>
+				</li>
+				<li class="nav-item">
+					<a aria-controls="sixth-pane" class="nav-link" id="sixth-tab">Create</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-9">
+      <div class="tab-content" id="navPanes">
+				<div class="tab-pane fade sh ow active" id="first-pane">
+					First pane
+				</div>
+				<div class="tab-pane fade" id="second-pane">
+					Second pane
+        </div>
+        <div class="tab-pane fade" id="third-pane">
+        <%= link_to 'Show', employees_path, class: "nav-link" %>
+				</div>
+        <div class="tab-pane fade" id="fourth-pane">
+        <%= link_to 'Create', new_employee_path, class: "nav-link" %>
+        </div>
+        <div class="tab-pane fade" id="fifth-pane">
+        <%= link_to 'Show', stores_path, class: "nav-link" %>
+				</div>
+        <div class="tab-pane fade" id="sixth-pane">
+        <%= link_to 'Create', new_store_path , class: 'nav-link'%>
+        </div>
+			</div>
+		</div>
+	</div>
