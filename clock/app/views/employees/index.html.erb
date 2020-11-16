@@ -1,39 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Employees</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Nip</th>
-      <th>Address</th>
-      <th>Status</th>
-      <th>Work days</th>
-      <th>Enter time</th>
-      <th>Departure time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee.name %></td>
-        <td><%= employee.nip %></td>
-        <td><%= employee.address %></td>
-        <td><%= employee.status %></td>
-        <td><%= employee.work_days %></td>
-        <td><%= employee.enter_time %></td>
-        <td><%= employee.departure_time %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Employee', new_employee_path %>
+<div class="container">
+  <div class="row">
+      <% @employees.each do |employee| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+          <img src="https://picsum.photos/200/200" class="img-thumbnail" />
+            <div class="card-body">
+              <p class="card-text">
+                <p><strong>Name:</strong> <%= employee.name %></p>
+                <p><strong>Employee number:</strong> <%= employee.id %></p>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <%= link_to 'Show', edit_employee_path(employee), class: 'btn btn-primary btn-lg btn-block' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
