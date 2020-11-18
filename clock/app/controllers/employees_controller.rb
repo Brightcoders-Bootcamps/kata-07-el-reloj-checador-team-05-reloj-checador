@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.where(status: true) # Employee.all
   end
 
   # GET /employees/1
@@ -54,10 +54,12 @@ class EmployeesController < ApplicationController
   # DELETE /employees/1
   # DELETE /employees/1.json
   def destroy
-    @employee.destroy
-    respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
-      format.json { head :no_content }
+    @employee = Employee.find(params[:id])
+    if @employee.status
+      @employee.update(status: false)
+      flash[:notice] = "Successfully disabled #{@employee.name}."
+      flash[:notice] = "Failed to disable #{@employee.name}."
+      render :action => :show
     end
   end
 
