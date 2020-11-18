@@ -4,7 +4,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
-    @stores = Store.all
+    @stores = Store.where(status: true)
   end
 
   # GET /stores/1
@@ -55,10 +55,12 @@ class StoresController < ApplicationController
   # DELETE /stores/1
   # DELETE /stores/1.json
   def destroy
-    @store.destroy
-    respond_to do |format|
-      format.html { redirect_to stores_url, notice: 'Store was successfully destroyed.' }
-      format.json { head :no_content }
+    @store = Store.find(params[:id])
+    if @store.status
+      @store.update(status: false)
+      flash[:notice] = "Successfully disabled #{@store.name}."
+      flash[:notice] = "Failed to disable #{@store.name}."
+      render :action => :show
     end
   end
 

@@ -6,7 +6,7 @@ class CreateStores < ActiveRecord::Migration[6.0]
       t.text :phone
       t.time :open_time
       t.time :close_time
-      t.integer :status
+      t.boolean :status
 
       t.timestamps
     end
