@@ -1,0 +1,25 @@
+    <div class="col-3">
+      <ul class="nav nav-tabs flex-column" id="navTabs">
+        <div class="sb-sidenav-menu-heading">Reports</div>
+				<li class="nav-item">
+					<a aria-controls="first-pane" class="nav-link active" id="first-tab">Attendance</a>
+				</li>
+				<li class="nav-item">
+					<a aria-controls="second-pane" class="nav-link" id="second-tab">Absence</a>
+        </li>
+        <div class="sb-sidenav-menu-heading">Employees</div>
+        <li class="nav-item">
+          <%= link_to 'Show', employees_path, class: "nav-link" %>
+				</li>
+        <li class="nav-item">
+          <%= link_to 'Create', new_employee_path, class: "nav-link" %>
+        </li>
+        <div class="sb-sidenav-menu-heading">Stores</div>
+        <li class="nav-item">
+          <%= link_to 'Show', stores_path, class: "nav-link" %>
+				</li>
+        <li class="nav-item">
+          <%= link_to 'Create', new_store_path , class: 'nav-link'%>
+				</li>
+			</ul>
+		</div>
