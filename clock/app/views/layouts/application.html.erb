@@ -10,10 +10,20 @@
 
   <body>
     <div class="row">
-      <%= render 'shared/sidebar' %>
-      <div class="col-9">
+      <% if signed_in? %>
+        <%= render 'shared/sidebar' %>
+        <div class="col-9">
+          <%= yield %>
+        </div>
+      <% else %>
         <%= yield %>
-      </div>
+      <% end %>
+    </div>
+
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
     </div>
   </body>
 </html>
