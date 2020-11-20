@@ -1,6 +1,10 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Welcome</h1>
-    <p class="lead">Choose a option from menu.</p>
+<% if signed_in? %>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Welcome</h1>
+      <p class="lead">Choose a option from menu.</p>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render "sessions/form" %>
+<% end %>
