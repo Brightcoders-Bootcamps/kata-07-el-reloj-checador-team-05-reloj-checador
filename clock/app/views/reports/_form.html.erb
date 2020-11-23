@@ -1,0 +1,22 @@
+<% if report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+        <% report.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_with(model: report, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :employee_id %>
+    <%= select("report", "employee_id", Employee.all.collect {|p| [ p.name, p.id ] }, { include_blank: false })  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
