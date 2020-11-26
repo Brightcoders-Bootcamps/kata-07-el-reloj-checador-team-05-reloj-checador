@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# Employee Controller
 class EmployeesController < ApplicationController
   before_action :require_login
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: %i[show edit update destroy]
 
   # GET /employees
   # GET /employees.json
@@ -10,8 +13,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1
   # GET /employees/1.json
-  def show
-  end
+  def show; end
 
   # GET /employees/new
   def new
@@ -22,6 +24,7 @@ class EmployeesController < ApplicationController
   def edit
     @show_btn_employee = true
   end
+
   # POST /employees
   # POST /employees.json
   def create
@@ -60,23 +63,24 @@ class EmployeesController < ApplicationController
       @employee.update(status: false)
       flash[:notice] = "Successfully disabled #{@employee.name}."
       flash[:notice] = "Failed to disable #{@employee.name}."
-      render :action => :show
+      render action: :show
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_employee
-      @employee = Employee.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def employee_params
-      params.require(:employee).permit(:name, :nip, :email, :address, :phone, :position, :status, :enter_time, :departure_time, work_days: {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_employee
+    @employee = Employee.find(params[:id])
+  end
 
-    def format_work_days(parameters)
-      parameters[:work_days] = parameters[:work_days].keys || []
-      parameters
-    end
+  # Only allow a list of trusted parameters through.
+  def employee_params
+    params.require(:employee).permit(:name, :nip, :email, :address, :phone, :position, :status, :enter_time, :departure_time, work_days: {})
+  end
+
+  def format_work_days(parameters)
+    parameters[:work_days] = parameters[:work_days].keys || []
+    parameters
+  end
 end

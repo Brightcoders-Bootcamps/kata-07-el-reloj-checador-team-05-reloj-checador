@@ -20,7 +20,7 @@
         <td scope="row"><%= Employee.find(report.employee_id).name %></td>
         <td><%= report.date %></td>
         <td><%= report.hour_start.strftime("%I:%M %p")  %></td>
-        <td><%= report.hour_finish.strftime("%I:%M %p")  %></td>
+        <td><%= report.hour_finish.strftime("%I:%M %p") unless report.hour_finish.nil? %></td>
         <td><%= report.work_day %></td>
         <td><%= link_to 'Show', report %></td>
         <td><%= link_to 'Edit', edit_report_path(report) %></td>

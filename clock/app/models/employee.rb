@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_many :reports
   serialize :work_days
   validates :name, presence: true, length: { minimum:1 }, format: { with: /([A-Za-z áéíóúÁÉÍÓÚ]{2,48})\w+/i }
   validates :nip, presence: true, format: { with: /([0-9])\w+/i }

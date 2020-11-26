@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# Store Controller
 class StoresController < ApplicationController
   before_action :require_login
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_store, only: %i[show edit update destroy]
 
   # GET /stores
   # GET /stores.json
@@ -10,8 +13,7 @@ class StoresController < ApplicationController
 
   # GET /stores/1
   # GET /stores/1.json
-  def show
-  end
+  def show; end
 
   # GET /stores/new
   def new
@@ -61,18 +63,19 @@ class StoresController < ApplicationController
       @store.update(status: false)
       flash[:notice] = "Successfully disabled #{@store.name}."
       flash[:notice] = "Failed to disable #{@store.name}."
-      render :action => :show
+      render action: :show
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_store
-      @store = Store.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def store_params
-      params.require(:store).permit(:name, :address, :phone, :open_time, :close_time, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_store
+    @store = Store.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def store_params
+    params.require(:store).permit(:name, :address, :phone, :open_time, :close_time, :status)
+  end
 end
