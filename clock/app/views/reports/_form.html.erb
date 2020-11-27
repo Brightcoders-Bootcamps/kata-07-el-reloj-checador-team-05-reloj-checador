@@ -1,0 +1,36 @@
+<% if report.errors.any? %>
+  <div class="alert alert-danger alert-dismissible" id="store-errors">
+    <button type="button" class="close">&times;</button>
+    <div id="error_explanation">
+      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+      <ul>
+        <% report.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<%= form_with(url: new_report_path, method: :get, local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :employee_nip %>
+    <%= password_field(:employee, :nip, value: @employee&.nip) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Search", class: 'btn btn-primary float-center' %>
+  </div>
+<% end %>
+
+<%- if @employee.present? %>
+  <%= form_with model: @report, remote: true do |form| %>
+    <div class="form-group">
+      <%= form.hidden_field :employee_id, value: @employee.id %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "#{ @report.new_record? ? "Check in" : "Check out" }", class: 'btn btn-secondary float-center' %>
+    </div>
+  <% end %>
+<% end %>

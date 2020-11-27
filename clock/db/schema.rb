@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_191130) do
+ActiveRecord::Schema.define(version: 2020_11_23_201042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,16 +30,15 @@ ActiveRecord::Schema.define(version: 2020_11_20_191130) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "models", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+  create_table "reports", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.date "date"
+    t.time "hour_start"
+    t.time "hour_finish"
+    t.string "work_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_models_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
+    t.index ["employee_id"], name: "index_reports_on_employee_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -54,18 +53,15 @@ ActiveRecord::Schema.define(version: 2020_11_20_191130) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", null: false
+    t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.string "remember_token", limit: 128, null: false
+    t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reports", "employees"
 end
