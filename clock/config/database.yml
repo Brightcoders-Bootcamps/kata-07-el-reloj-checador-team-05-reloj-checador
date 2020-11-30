@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: clock_production
-  username: pguser
-  password: pguser_password
+  username: clock
+  password: <%= ENV['DATABASE_PASSWORD'] %>
