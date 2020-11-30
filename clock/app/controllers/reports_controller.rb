@@ -13,9 +13,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1
   # GET /reports/1.json
-  def show
-    @result = verify_faults
-  end
+  def show; end
 
   # GET /reports/new
   def new
@@ -71,29 +69,6 @@ class ReportsController < ApplicationController
       format.html { redirect_to reports_url, notice: 'Report was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def verify_faults
-    report = Report.find(@report.id)
-    employee = Employee.find(report.employee_id)
-    employee.work_days
-    days_month_working = employee.work_days * obtain_number_week
-    count_day = 0
-    report = Report.where(employee_id: employee.id)
-    employee.work_days.each do |day|
-      count_day += report.where(work_day: day).count
-    end
-    if count_day < days_month_working.count
-      days_month_working.count - count_day
-    else
-      0
-    end
-  end
-
-  def obtain_number_week
-    current_time = Time.zone.now
-    beginning_of_the_month = current_time.beginning_of_month
-    current_time.strftime('%U').to_i - beginning_of_the_month.strftime('%U').to_i + 1
   end
 
   private

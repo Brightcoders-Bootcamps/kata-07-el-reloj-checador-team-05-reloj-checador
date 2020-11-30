@@ -1,63 +1,44 @@
-# frozen_string_literal: true
-
 require 'test_helper'
 
-# Report controller
 class ReportsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @report = reports(:one)
   end
 
-  test 'should get index' do
+  test "should get index" do
     get reports_url
     assert_response :success
   end
 
-  test 'should get new' do
+  test "should get new" do
     get new_report_url
     assert_response :success
   end
 
-  test 'should create report' do
+  test "should create report" do
     assert_difference('Report.count') do
-      post reports_url, params: {
-        report: {
-          date: @report.date,
-          employee_id: @report.employee_id,
-          hour_finish: @report.hour_finish,
-          hour_start: @report.hour_start,
-          work_day: @report.work_day
-        }
-      }
+      post reports_url, params: { report: { date: @report.date, employee_id: @report.employee_id, hour_finish: @report.hour_finish, hour_start: @report.hour_start, work_day: @report.work_day } }
     end
 
     assert_redirected_to report_url(Report.last)
   end
 
-  test 'should show report' do
+  test "should show report" do
     get report_url(@report)
     assert_response :success
   end
 
-  test 'should get edit' do
+  test "should get edit" do
     get edit_report_url(@report)
     assert_response :success
   end
 
-  test 'should update report' do
-    patch report_url(@report), params: {
-      report: {
-        date: @report.date,
-        employee_id: @report.employee_id,
-        hour_finish: @report.hour_finish,
-        hour_start: @report.hour_start,
-        work_day: @report.work_day
-      }
-    }
+  test "should update report" do
+    patch report_url(@report), params: { report: { date: @report.date, employee_id: @report.employee_id, hour_finish: @report.hour_finish, hour_start: @report.hour_start, work_day: @report.work_day } }
     assert_redirected_to report_url(@report)
   end
 
-  test 'should destroy report' do
+  test "should destroy report" do
     assert_difference('Report.count', -1) do
       delete report_url(@report)
     end
