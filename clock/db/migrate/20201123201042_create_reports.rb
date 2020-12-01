@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Create Reports Migration
-class CreateRseports < ActiveRecord::Migration[6.0]
+class CreateReports < ActiveRecord::Migration[6.0]
   def change
     create_table :reports do |t|
       t.belongs_to :employee, null: false, foreign_key: true
